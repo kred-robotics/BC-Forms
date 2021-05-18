@@ -118,3 +118,51 @@ export const SingleCTA = styled.button`
     cursor: pointer;
   }
 `
+export const UserInputWrapper = styled.div`
+  display: flex;
+  margin: 96px auto 24px;
+  justify-content: center;
+`
+export const InputContainer = styled.div`
+  margin: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+export const PreviewInputImg = styled.img`
+  height: 98px;
+  width: 98px;
+  margin: 4px;
+`
+export const QuizContainer = styled.div`
+  margin: 72px auto 12px;
+  padding: 16px 0 16px 8px ;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  box-shadow:0 0 9px #ffa31a;
+  border-radius: 8px;
+  width: 70%;
+`
+export const QuizQuestion = styled.div`
+  margin: 12px 24px;
+`
+export const QuizAnswersOption = styled.div`
+  margin: 8px 48px;
+`
+export const QuizButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+export const QuizButtons = styled.div`
+    margin: 4px;
+    padding: 8px;
+    background-color: #ffa31a;
+    border: 3px solid white;
+    color: white;
+    @media (min-width: 558px) { 
+        margin: 4px 12px;
+        padding: 8px 16px;
+        border: 3px solid white;
+    }
+`

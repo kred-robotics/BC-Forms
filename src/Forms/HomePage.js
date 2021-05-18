@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import PopUpPage from "./SandLPop";
 import firebase from "../firebase";
 import { 
@@ -13,6 +14,7 @@ import {
  const HomePage = () => {
     
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const[SignupModal, setSignupModal] = useState(false)
     const[LoginModal, setLoginModal] = useState(false)
@@ -57,7 +59,12 @@ import {
             if((d.userID === userDetail) && (d.password === Password)) flag = true
             return true
         })
-        flag ? history.push(`/${userDetail}`) : alert('INVALID CREDENTIALS!')
+        flag 
+        ? (() => {
+            dispatch({type: 'TOGGLE_LOGIN'})
+            history.push(`/${userDetail}`)
+        })() 
+        : alert('INVALID CREDENTIALS!')
     }
 
     return(
