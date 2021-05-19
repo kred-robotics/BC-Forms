@@ -1,7 +1,7 @@
-import { Fragment, useState } from "react"
+import { Fragment, useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import {Questions, Answers} from "./QuizData/data";
+import {Questions, AnswersFun} from "./QuizData/data";
 import { 
     NavigationContainer, 
     NavItems, 
@@ -23,7 +23,18 @@ const DetailPage = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const userName = history?.location?.pathname.slice(1)
+    const [Answers,setAnswer] = useState([]);
+    useEffect(() => {
+        let ans = [];
+        ( async function () {
+            ans = await AnswersFun();
+          })();
+          if (ans.length){
+              setAnswer(ans)
+          }
 
+    },[])
+    console.log(Answers);
     const[previeImg, setPrevieImg] = useState({
         image : null,
         type: null
@@ -54,7 +65,10 @@ const DetailPage = () => {
         setQuesCounter(curr => curr +1)
     }
     const checkAnswer = () => {
-        let count = 0
+        let count = 0;
+        
+        //const Answers = await AnswersFun();
+        console.log(Answers,ansArray);
         for (let index = 0; index < ansArray.length; index++) {
             if (ansArray[index] === Answers[index]) count ++
             console.log(ansArray[index]);
@@ -64,11 +78,11 @@ const DetailPage = () => {
     const HandleSubmit = () => {
         console.log(radioValue);
         setAnsArray(ansArray.push(radioValue))
-        if(ansArray.length === Answers.length){
+        // if(ansArray.length === Answers.length){
             const result = checkAnswer()
             setOnSubmit(true)
             setResult(result)
-        }
+        // }
     }
 
     return (<Fragment>

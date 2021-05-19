@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import HomePage from './Forms/HomePage';
 import DetailPage from "./Forms/DetailPage";
 import NotFound from "./Components/404File";
+import TestWeb3 from "./Forms/w3"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         {!isLogin && <Route path='/' exact component={HomePage} />}
         {isLogin && <Route path='/:userID' component={DetailPage} />}
+        <Route path='/w3' component = {TestWeb3}/>
         <Route path='*' component = {NotFound}/>
       </Switch>
     </Router>  
