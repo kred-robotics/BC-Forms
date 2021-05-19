@@ -26,23 +26,8 @@ export const Questions = [
 ]
 
 export async function AnswersFun (){
-   
-    console.log("i was called");
-    // var result;
-
-    const result1 =  contract.methods.getAnswers().call()
-        // function (e,r){
-        //     if (r){
-        //         result = r;
-        //     }
-        // }
-    //)//.then( res => {return res} );
-    /*function (err,res){
-        if (res){
-            result = res;
-        }*/
-    //})
-    return result1
+    const result =  contract.methods.getAnswers().call()
+    return result
 };
 
 

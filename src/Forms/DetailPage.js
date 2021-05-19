@@ -24,17 +24,16 @@ const DetailPage = () => {
     const dispatch = useDispatch()
     const userName = history?.location?.pathname.slice(1)
     const [Answers,setAnswer] = useState([]);
+    
     useEffect(() => {
         let ans = [];
         ( async function () {
             ans = await AnswersFun();
+            if (ans.length){
+                  setAnswer(ans)
+              }
           })();
-          if (ans.length){
-              setAnswer(ans)
-          }
-
     },[])
-    console.log(Answers);
     const[previeImg, setPrevieImg] = useState({
         image : null,
         type: null
@@ -66,23 +65,17 @@ const DetailPage = () => {
     }
     const checkAnswer = () => {
         let count = 0;
-        
-        //const Answers = await AnswersFun();
-        console.log(Answers,ansArray);
         for (let index = 0; index < ansArray.length; index++) {
             if (ansArray[index] === Answers[index]) count ++
-            console.log(ansArray[index]);
         }
         return count
     }
     const HandleSubmit = () => {
         console.log(radioValue);
         setAnsArray(ansArray.push(radioValue))
-        // if(ansArray.length === Answers.length){
-            const result = checkAnswer()
-            setOnSubmit(true)
-            setResult(result)
-        // }
+        const result = checkAnswer()
+        setOnSubmit(true)
+        setResult(result)
     }
 
     return (<Fragment>
